@@ -1,0 +1,30 @@
+services:
+  app:
+    build: .
+    container_name: docefresco-app
+    restart: unless-stopped
+    volumes:
+      - .:/var/www
+    networks:
+      - traefik
+      - kavangox_kavangox-network
+    labels:
+      - "traefik.enable=true"
+      # HTTP Router
+      - "traefik.http.routers.docefresco-http.rule=Host(`docefresco.primestackdigital.com`) || Host(`www.docefresco.primestackdigital.com`)"
+      - "traefik.http.routers.docefresco-http.entrypoints=web"
+      - "traefik.http.routers.docefresco-http.middlewares=docefresco-redirect"
+      # Middleware: Redirect HTTP to HTTPS
+      - "traefik.http.middlewares.docefresco-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.docefresco-redirect.redirectscheme.permanent=true"
+      # HTTPS Router
+      - "traefik.http.routers.docefresco-https.rule=Host(`docefresco.primestackdigital.com`) || Host(`www.docefresco.primestackdigital.com`)"
+      - "traefik.http.routers.docefresco-https.entrypoints=websecure"
+      - "traefik.http.routers.docefresco-https.tls.certresolver=letsencrypt"
+      - "traefik.http.services.docefresco-svc.loadbalancer.server.port=80"
+
+networks:
+  traefik:
+    external: true
+  kavangox_kavangox-network:
+    external: true
