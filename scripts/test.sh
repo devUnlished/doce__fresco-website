@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+cd "$(dirname "$0")/.."
+
 DOMAIN="docefresco.primestackdigital.com"
 ENDPOINT="https://$DOMAIN"
 
