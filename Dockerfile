@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo_mysql pdo_sqlite zip gd intl \
     && echo "upload_max_filesize=64M" > /usr/local/etc/php/conf.d/uploads.ini \
     && echo "post_max_size=64M" >> /usr/local/etc/php/conf.d/uploads.ini \
+    && echo "session.upload_progress.enabled = Off" >> /usr/local/etc/php/conf.d/uploads.ini \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
