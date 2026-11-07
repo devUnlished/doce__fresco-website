@@ -58,7 +58,7 @@
 
     /* Heading Box positioned at the Far Right */
     .hero-heading-box {
-      max-width: 760px;
+      max-width: 900px;
       text-align: right;
       transform: translateY(-2.75rem);
       transition: transform 0.3s ease;
@@ -67,10 +67,10 @@
     /* Gradient-blended headline */
     .hero-heading {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(3.6rem, 5.8vw, 5.6rem);
+      font-size: clamp(4.2rem, 7vw, 6.8rem);
       font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -0.025em;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
       text-wrap: balance;
     }
 
@@ -86,7 +86,7 @@
     /* "fresh in your bottle." in vibrant cold-pressed botanical green tones */
     .phrase-fresh {
       display: block;
-      margin-top: 0.6rem;
+      margin-top: 0.75rem;
       background: linear-gradient(135deg, #7cb342 0%, #2e7d32 60%, #1b5e20 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -101,12 +101,12 @@
         padding: 2.5rem 2rem;
       }
       .hero-heading-box {
-        max-width: 640px;
+        max-width: 760px;
         transform: translateY(-2rem);
       }
       .hero-heading {
-        font-size: clamp(3.2rem, 6.2vw, 4.6rem);
-        line-height: 1.1;
+        font-size: clamp(3.75rem, 7.2vw, 5.25rem);
+        line-height: 1.06;
       }
     }
 
@@ -142,12 +142,12 @@
       }
 
       .hero-heading {
-        font-size: clamp(2.75rem, 8.2vw, 3.5rem);
-        line-height: 1.12;
+        font-size: clamp(3.1rem, 9.2vw, 4.2rem);
+        line-height: 1.08;
       }
 
       .phrase-fresh {
-        margin-top: 0.45rem;
+        margin-top: 0.5rem;
       }
     }
 
@@ -158,8 +158,8 @@
         transform: translateY(-0.5rem);
       }
       .hero-heading {
-        font-size: clamp(2.35rem, 8.5vw, 2.75rem);
-        line-height: 1.12;
+        font-size: clamp(2.65rem, 9.5vw, 3.25rem);
+        line-height: 1.08;
       }
     }
   </style>
