@@ -66,8 +66,8 @@ test("No events section", 'id="events"' not in html and "events-section" not in 
 test("No contact section or form", 'id="contact"' not in html and "<form" not in html)
 test("No footer", "<footer" not in html)
 
-# 4. Verify Hero Section exists with only the background
-test("Hero section (#home) is present", '<section class="hero-section" id="home"></section>' in html)
+# 4. Verify Hero Section exists with the background image
+test("Hero section (#home) is present", '<section class="hero-section" id="home">' in html and 'class="hero-bg-image"' in html)
 
 # 5. Verify Background Image HTTP reachability
 hero_img_url = f"{BASE_URL}images/Doce&fresc_hero%20section.jpeg"
