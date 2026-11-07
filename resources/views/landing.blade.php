@@ -58,7 +58,7 @@
 
     /* Heading Box positioned at the Far Right */
     .hero-heading-box {
-      max-width: 680px;
+      max-width: 760px;
       text-align: right;
       transform: translateY(-2.75rem);
       transition: transform 0.3s ease;
@@ -67,9 +67,9 @@
     /* Gradient-blended headline */
     .hero-heading {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(3.15rem, 5.2vw, 4.85rem);
+      font-size: clamp(3.6rem, 5.8vw, 5.6rem);
       font-weight: 900;
-      line-height: 1.12;
+      line-height: 1.08;
       letter-spacing: -0.025em;
       text-wrap: balance;
     }
@@ -86,7 +86,7 @@
     /* "fresh in your bottle." in vibrant cold-pressed botanical green tones */
     .phrase-fresh {
       display: block;
-      margin-top: 0.35rem;
+      margin-top: 0.6rem;
       background: linear-gradient(135deg, #7cb342 0%, #2e7d32 60%, #1b5e20 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -101,11 +101,12 @@
         padding: 2.5rem 2rem;
       }
       .hero-heading-box {
-        max-width: 580px;
+        max-width: 640px;
         transform: translateY(-2rem);
       }
       .hero-heading {
-        font-size: clamp(2.85rem, 5.5vw, 4.05rem);
+        font-size: clamp(3.2rem, 6.2vw, 4.6rem);
+        line-height: 1.1;
       }
     }
 
@@ -141,20 +142,24 @@
       }
 
       .hero-heading {
-        font-size: clamp(2.45rem, 7.5vw, 3.15rem);
-        line-height: 1.15;
+        font-size: clamp(2.75rem, 8.2vw, 3.5rem);
+        line-height: 1.12;
+      }
+
+      .phrase-fresh {
+        margin-top: 0.45rem;
       }
     }
 
     @media (max-width: 480px) {
       .hero-heading-box {
-        padding: 1.4rem 1.15rem;
+        padding: 1.25rem 1rem;
         margin-bottom: 1.25rem;
         transform: translateY(-0.5rem);
       }
       .hero-heading {
-        font-size: 2.45rem;
-        line-height: 1.15;
+        font-size: clamp(2.35rem, 8.5vw, 2.75rem);
+        line-height: 1.12;
       }
     }
   </style>
@@ -165,8 +170,8 @@
     <div class="hero-container">
       <div class="hero-heading-box">
         <h1 class="hero-heading">
-          <span class="phrase-land">The flavor of our land,</span>
-          <span class="phrase-fresh">fresh in your bottle.</span>
+          <span class="phrase-land">The flavor of<br>our land,</span>
+          <span class="phrase-fresh">fresh in<br>your bottle.</span>
         </h1>
       </div>
     </div>

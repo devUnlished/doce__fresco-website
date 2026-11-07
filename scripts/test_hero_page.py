@@ -70,10 +70,10 @@ test("No contact section or form", 'id="contact"' not in html and "<form" not in
 test("No footer", "<footer" not in html)
 test("Pill badge / button-looking border is removed", "hero-pill" not in html)
 
-# 4. Verify Heading content
+# 4. Verify Heading content with split lines
 test(
-    "Heading text 'The flavor of our land, fresh in your bottle.' is present",
-    "The flavor of our land," in html and "fresh in your bottle." in html
+    "Heading phrases are split onto separate lines on top of each other",
+    "The flavor of<br>our land," in html and "fresh in<br>your bottle." in html
 )
 
 # 5. Verify Far-Right positioning, Upward shift & Color blending
@@ -82,8 +82,8 @@ test(
     "justify-content: flex-end" in html and "text-align: right" in html and "translateY(-2.75rem)" in html
 )
 test(
-    "Enlarged heading font-size (~10px increase) is present",
-    "clamp(3.15rem" in html
+    "Enlarged heading font-size (clamp up to 5.6rem / ~90px) is present",
+    "clamp(3.6rem" in html
 )
 test(
     "Color-blended phrases (.phrase-land and .phrase-fresh) are present",
