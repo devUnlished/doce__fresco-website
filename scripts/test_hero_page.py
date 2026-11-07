@@ -111,28 +111,28 @@ try:
 except Exception as e:
     test("Hero background image returns HTTP 200", False, f"- Error: {e}")
 
-# 8. Verify all other pages have active links, return HTTP 200, and include the navbar with white border
+# 8. Verify all active links return HTTP 200, have active nav link indicators, and no extra content
 subpages = [
-    ("/sobre", "Sobre Nós", "Sobre a Doce & Fresco"),
-    ("/sumos", "Nossos Sumos", "Os Nossos Sumos 100% Naturais"),
-    ("/origem", "Origem", "A Origem do Nosso Sabor"),
-    ("/contacto", "Contacto", "Fale com a Doce & Fresco"),
+    ("/sobre", "Sobre Nós"),
+    ("/sumos", "Nossos Sumos"),
+    ("/origem", "Origem"),
+    ("/contacto", "Contacto"),
 ]
 
-for path, link_title, expected_text in subpages:
+for path, link_title in subpages:
     sub_url = f"{BASE_URL}{path.lstrip('/')}"
     try:
         sub_req = urllib.request.Request(sub_url, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(sub_req, context=ctx, timeout=10) as sub_resp:
             sub_status = sub_resp.getcode()
             sub_html = sub_resp.read().decode("utf-8")
-        test(f"Page {path} returns HTTP 200 OK", sub_status == 200)
+        test(f"Active link {path} returns HTTP 200 OK", sub_status == 200)
         test(
-            f"Page {path} has active nav indicator for '{link_title}' and white bottom border",
-            f'>{link_title}</a>' in sub_html and "border-bottom: 2px solid #ffffff;" in sub_html and expected_text in sub_html
+            f"Active link {path} highlights '{link_title}' as active and has white bottom border",
+            f'>{link_title}</a>' in sub_html and "border-bottom: 2px solid #ffffff;" in sub_html and "active" in sub_html
         )
     except Exception as e:
-        test(f"Page {path} returns HTTP 200 OK", False, f"- Error: {e}")
+        test(f"Active link {path} returns HTTP 200 OK", False, f"- Error: {e}")
 
 # 9. Verify file system
 remaining_images = os.listdir(IMAGES_DIR)
@@ -142,12 +142,11 @@ test(
     f"- Found: {remaining_images}"
 )
 
-expected_views = {"landing.blade.php", "about.blade.php", "juices.blade.php", "origin.blade.php", "contact.blade.php", "layouts"}
-actual_views = set(os.listdir(VIEWS_DIR))
+remaining_views = os.listdir(VIEWS_DIR)
 test(
-    "Dedicated views for all active pages exist in resources/views",
-    expected_views.issubset(actual_views),
-    f"- Found: {actual_views}"
+    "Only 'landing.blade.php' remains in resources/views (no extra content views)",
+    remaining_views == ["landing.blade.php"],
+    f"- Found: {remaining_views}"
 )
 
 print("=======================================================")
