@@ -57,8 +57,9 @@ except Exception as e:
 
 test("GET / returns HTTP 200 OK", status_code == 200)
 
-# 2. Verify Navbar is completely removed
-test("Navbar is removed from page", "navbar" not in html and "<nav" not in html)
+# 2. Verify Navbar with White Bottom Border Line
+test("Navbar is present with white bottom border line", 'class="navbar"' in html and "border-bottom: 2px solid #ffffff;" in html)
+test("Brand logo and navigation links are present in navbar", "brand-title" in html and "nav-links" in html)
 test("Top announcement bar is removed from page", "top-bar" not in html)
 
 # 3. Verify all other content sections and footer are removed

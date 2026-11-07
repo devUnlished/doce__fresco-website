@@ -27,6 +27,136 @@
       font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
+    /* ==========================================================================
+       Navigation Bar with White Bottom Border Line
+       ========================================================================== */
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 2px solid #ffffff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      padding: 1.1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      transition: transform 0.25s ease;
+    }
+
+    .brand-logo-wrap:hover {
+      transform: scale(1.03);
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.65rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      line-height: 1;
+    }
+
+    .brand-word-doce {
+      color: #c91924;
+    }
+
+    .brand-word-amp {
+      color: #7cb342;
+      font-weight: 700;
+      font-size: 1.35rem;
+    }
+
+    .brand-word-fresco {
+      color: #1b5e20;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #121e15;
+      text-decoration: none;
+      position: relative;
+      padding: 0.35rem 0;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #c91924;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      background: linear-gradient(90deg, #c91924, #7cb342);
+      border-radius: 2px;
+    }
+
+    .nav-btn-contact {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ffffff;
+      background: linear-gradient(135deg, #c91924 0%, #e65100 100%);
+      padding: 0.6rem 1.4rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(201, 25, 36, 0.3);
+      transition: all 0.25s ease;
+    }
+
+    .nav-btn-contact:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(201, 25, 36, 0.45);
+      color: #ffffff;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid #ffffff;
+      border-radius: 10px;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: #121e15;
+      transition: background 0.2s ease;
+    }
+
+    .mobile-toggle:hover {
+      background: rgba(255, 255, 255, 0.95);
+    }
+
     /* Hero Section with Responsive Background */
     .hero-section {
       position: relative;
@@ -41,6 +171,7 @@
       background-size: cover;
       background-position: left center;
       background-repeat: no-repeat;
+      padding-top: 5rem;
     }
 
     /* Far-Right Container */
@@ -97,6 +228,12 @@
        Responsive Optimization (Mobile & Tablets)
        ========================================================================== */
     @media (max-width: 1024px) {
+      .nav-container {
+        padding: 0 2rem;
+      }
+      .nav-links {
+        gap: 1.35rem;
+      }
       .hero-container {
         padding: 2rem 1.5rem;
       }
@@ -111,11 +248,52 @@
     }
 
     @media (max-width: 768px) {
+      .navbar {
+        padding: 0.85rem 0;
+      }
+
+      .nav-container {
+        padding: 0 1.25rem;
+      }
+
+      .mobile-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 2px solid #ffffff;
+        padding: 1.5rem 1.5rem 2rem 1.5rem;
+        gap: 1.1rem;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-btn-contact {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+
       .hero-section {
         flex-direction: column;
         justify-content: flex-end;
         align-items: center;
-        padding: 1.5rem 1rem 3rem 1rem;
+        padding: 5.5rem 1rem 3rem 1rem;
         background-position: 28% 25%;
         background-size: cover;
       }
@@ -165,6 +343,35 @@
   </style>
 </head>
 <body>
+  <!-- Navigation Bar with White Bottom Border Line -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand-logo-wrap" aria-label="Doce & Fresco">
+        <span class="brand-title">
+          <span class="brand-word-doce">Doce</span>
+          <span class="brand-word-amp">&</span>
+          <span class="brand-word-fresco">Fresco</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" id="navMenu">
+        <a href="#home" class="nav-link active">Início</a>
+        <a href="#sobre" class="nav-link">Sobre Nós</a>
+        <a href="#sumos" class="nav-link">Nossos Sumos</a>
+        <a href="#origem" class="nav-link">Origem</a>
+        <a href="#contacto" class="nav-btn-contact">Contactar</a>
+      </nav>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
   <!-- Home Page Hero Section Only -->
   <section class="hero-section" id="home">
     <div class="hero-container">
@@ -176,5 +383,19 @@
       </div>
     </div>
   </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var toggle = document.getElementById('mobileToggle');
+      var menu = document.getElementById('navMenu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', function() {
+          menu.classList.toggle('active');
+          var isOpen = menu.classList.contains('active');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
