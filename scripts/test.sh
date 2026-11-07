@@ -46,8 +46,8 @@ if docker ps --format '{{.Names}}' | grep -q "^docefresco-app$"; then
         exit 1
     fi
 
-    # Run Python end-to-end form and CSRF test over HTTPS
-    python3 scripts/test_inquiry.py
+    # Run Python end-to-end hero page verification
+    python3 scripts/test_hero_page.py
 else
     echo "Container docefresco-app is not currently running."
     exit 1

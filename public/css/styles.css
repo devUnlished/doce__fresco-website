@@ -350,141 +350,169 @@ h1, h2, h3, h4, h5, h6 {
    Hero Section
    ========================================================================== */
 .hero-section {
-  margin-top: 2rem;
-  padding: 5rem 0 6.5rem;
-  background: var(--bg-hero);
+  min-height: 100vh;
+  margin-top: 0;
+  padding: 4rem 0;
+  display: flex;
+  align-items: center;
   position: relative;
   overflow: hidden;
+  background-image: url('/images/Doce&fresc_hero%20section.jpeg');
+  background-size: cover;
+  background-position: center left;
+  background-repeat: no-repeat;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 4.5rem;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3.5rem;
   align-items: center;
-}
-
-/* Left Hero: Crisp Juice Image Card */
-.hero-media-wrapper {
-  position: relative;
-}
-
-.hero-image-card {
-  position: relative;
-  border-radius: var(--radius-lg);
-  padding: 0.95rem;
-  background: #ffffff;
-  box-shadow: var(--shadow-lg), 0 0 30px rgba(151, 203, 47, 0.18);
-  border: 2px solid #d9ecc9;
-  z-index: 1;
-}
-
-.juice-composition-container {
-  position: relative;
-  border-radius: calc(var(--radius-lg) - 8px);
-  overflow: hidden;
-  height: 520px;
-  background: #102115;
-}
-
-.hero-main-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-image-card:hover .hero-main-img {
-  transform: scale(1.03);
+.hero-media-spacer {
+  min-height: 480px;
 }
 
-.hero-badge-top {
-  position: absolute;
-  top: 1.65rem;
-  left: 1.65rem;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(10px);
-  padding: 0.6rem 1.25rem;
-  border-radius: var(--radius-full);
+.hero-content {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 3.25rem 3rem;
+  box-shadow: 0 24px 50px -12px rgba(18, 30, 21, 0.15);
+}
+
+.pill-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  border: 1.5px solid #d4e8c1;
-  z-index: 10;
-}
-
-.hero-badge-top i {
-  color: var(--brand-green);
-  width: 18px;
-  height: 18px;
-}
-
-.hero-badge-top strong {
+  background: #ffffff;
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-full);
   font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--brand-red);
+  box-shadow: 0 4px 12px rgba(234, 29, 44, 0.12);
+  border: 1.5px solid rgba(234, 29, 44, 0.22);
+  margin-bottom: 1.35rem;
+}
+
+.pill-badge i, .pill-badge svg {
+  width: 17px;
+  height: 17px;
+}
+
+.hero-title {
+  font-size: 3.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.25rem;
+}
+
+.highlight-red   { color: var(--brand-red); }
+.highlight-lime  { color: var(--brand-lime-hover); }
+.highlight-green { color: var(--brand-green); }
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.85rem;
+}
+
+.hero-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 2.25rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-weight: 700;
+  font-size: 0.98rem;
   color: var(--text-dark);
 }
 
-/* Floating Fruit Badges */
-.floating-fruit-card {
-  position: absolute;
-  background: #ffffff;
-  border-radius: var(--radius-md);
-  padding: 0.75rem 1.15rem;
-  display: flex;
-  align-items: center;
-  gap: 0.95rem;
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
-  border: 1.5px solid #d9ecc9;
-  z-index: 10;
-}
-
-.floating-fruit-card.top-right {
-  top: 2.25rem;
-  right: -2rem;
-  animation: floatJuice 4s ease-in-out infinite alternate;
-}
-
-.floating-fruit-card.bottom-left {
-  bottom: 2.25rem;
-  left: -2rem;
-  animation: floatJuice 4.5s ease-in-out infinite alternate-reverse;
-}
-
-.floating-fruit-card img {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-.stat-circle {
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-lime) 100%);
-  color: #ffffff;
-  border-radius: 12px;
+.feature-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--brand-green-light);
+  color: var(--brand-green);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+  flex-shrink: 0;
 }
 
-.float-info span {
-  display: block;
-  font-size: 0.74rem;
+.feature-icon i, .feature-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.25rem;
+}
+
+.hero-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.stat-box h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--brand-red);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.stat-box p {
+  font-size: 0.82rem;
+  font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
-  font-weight: 700;
   letter-spacing: 0.04em;
 }
 
-.float-info strong {
-  display: block;
-  font-size: 0.96rem;
-  color: var(--text-dark);
+.stat-divider {
+  width: 1px;
+  height: 38px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+    padding: 3rem 0;
+    min-height: 100vh;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .hero-media-spacer {
+    display: none;
+  }
+  .hero-content {
+    padding: 2.25rem 1.75rem;
+  }
+  .hero-title {
+    font-size: 2.6rem;
+  }
 }
 
 /* Value Pillars Section */
