@@ -1,19 +1,17 @@
 #!/usr/bin/env python3
 """
-Doce & Fresco - Hero Section Only Verification Suite
+Doce & Fresco - Clean Hero Background Verification Suite
 Verifies:
-1. Live HTTPS HTTP 200 OK
-2. Navbar is completely removed
-3. Top announcement bar is completely removed
-4. Only the home page hero section exists (no about, flavors, sourcing, events, contact form, footer)
-5. Hero section background image 'Doce&fresc_hero section.jpeg' returns HTTP 200
-6. Only 'Doce&fresc_hero section.jpeg' remains in public/images
-7. Only 'landing.blade.php' remains in resources/views
-8. Interactive CTA buttons (mailto and tel) are present and functional
+1. Live HTTPS GET / returns HTTP 200 OK
+2. Navbar is completely absent
+3. All other content/sections (about, flavors, sourcing, events, contact, footer) are completely absent
+4. Home page has the hero section (#home) with no extraneous text content
+5. Hero section background image 'Doce&fresc_hero section.jpeg' returns HTTP 200 with valid JPEG MIME type
+6. Only 'Doce&fresc_hero section.jpeg' exists in public/images
+7. Only 'landing.blade.php' exists in resources/views
 """
 
 import os
-import re
 import ssl
 import sys
 import urllib.request
@@ -37,7 +35,7 @@ def test(name, condition, details=""):
         print(f"  [FAIL] {name} {details}")
 
 print("=======================================================")
-print("Running Doce & Fresco Hero Section Verification Suite")
+print("Running Doce & Fresco Clean Hero Verification Suite")
 print("=======================================================")
 
 ctx = ssl.create_default_context()
@@ -56,29 +54,22 @@ except Exception as e:
 
 test("GET / returns HTTP 200 OK", status_code == 200)
 
-# 2. Verify Navbar is completely removed
+# 2. Verify Navbar and top-bar are completely removed
 test("Navbar is removed from page", "navbar" not in html and "<nav" not in html)
-
-# 3. Verify Top announcement bar is removed
 test("Top announcement bar is removed from page", "top-bar" not in html)
 
-# 4. Verify all other sections are removed
-test("Pillars (#about) section removed", 'id="about"' not in html and "pillars-section" not in html)
-test("Flavors (#flavors) section removed", 'id="flavors"' not in html and "flavors-section" not in html)
-test("Sourcing (#sourcing) section removed", 'id="sourcing"' not in html and "sourcing-section" not in html)
-test("Events (#events) section removed", 'id="events"' not in html and "events-section" not in html)
-test("Contact (#contact) section removed", 'id="contact"' not in html and "contact-section" not in html)
-test("Footer is removed", "<footer" not in html and "footer-content" not in html)
+# 3. Verify all other content sections and footer are removed
+test("No about/pillars section", 'id="about"' not in html and "pillars-section" not in html)
+test("No flavors section", 'id="flavors"' not in html and "flavors-section" not in html)
+test("No sourcing section", 'id="sourcing"' not in html and "sourcing-section" not in html)
+test("No events section", 'id="events"' not in html and "events-section" not in html)
+test("No contact section or form", 'id="contact"' not in html and "<form" not in html)
+test("No footer", "<footer" not in html)
 
-# 5. Verify Hero Section is present and properly constructed
-test("Hero section (#home) is present", 'id="home"' in html and "hero-section" in html)
-test("Hero brand title contains Doce & Fresco", "Doce" in html and "Fresco" in html and "highlight-red" in html)
-test("Hero subtitle is present", "From sun-drenched orchards directly to your glass" in html)
-test("Hero features list is present", "Cold-Pressed & Flash Chilled Daily" in html)
-test("Interactive CTA buttons present (mailto & tel)", 'href="mailto:contato@doceefresco.com"' in html and 'href="tel:+351210987654"' in html)
-test("Hero stats row present", "100%" in html and "12+" in html and "50k+" in html)
+# 4. Verify Hero Section exists with only the background
+test("Hero section (#home) is present", '<section class="hero-section" id="home"></section>' in html)
 
-# 6. Verify Background Image HTTP reachability
+# 5. Verify Background Image HTTP reachability
 hero_img_url = f"{BASE_URL}images/Doce&fresc_hero%20section.jpeg"
 try:
     img_req = urllib.request.Request(hero_img_url, headers={"User-Agent": "Mozilla/5.0"})
@@ -90,7 +81,7 @@ try:
 except Exception as e:
     test("Hero background image returns HTTP 200", False, f"- Error: {e}")
 
-# 7. Verify file system: Only 'Doce&fresc_hero section.jpeg' in public/images
+# 6. Verify file system: Only 'Doce&fresc_hero section.jpeg' in public/images
 remaining_images = os.listdir(IMAGES_DIR)
 test(
     "Only 'Doce&fresc_hero section.jpeg' remains in public/images",
@@ -98,7 +89,7 @@ test(
     f"- Found: {remaining_images}"
 )
 
-# 8. Verify file system: Only 'landing.blade.php' remains in resources/views
+# 7. Verify file system: Only 'landing.blade.php' remains in resources/views
 remaining_views = os.listdir(VIEWS_DIR)
 test(
     "Only 'landing.blade.php' remains in resources/views",
