@@ -70,10 +70,10 @@ test("No contact section or form", 'id="contact"' not in html and "<form" not in
 test("No footer", "<footer" not in html)
 test("Pill badge / button-looking border is removed", "hero-pill" not in html)
 
-# 4. Verify Heading content with split lines
+# 4. Verify Heading content in Portuguese with split lines
 test(
-    "Heading phrases are split onto separate lines on top of each other",
-    "The flavor of<br>our land," in html and "fresh in<br>your bottle." in html
+    "Portuguese heading phrases are split onto separate lines on top of each other",
+    "O sabor da<br>nossa terra," in html and "fresco na<br>sua garrafa." in html
 )
 
 # 5. Verify Far-Right positioning, Upward shift & Color blending

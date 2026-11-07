@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Doce & Fresco | 100% Natural Juice</title>
-  <meta name="description" content="Doce & Fresco - The flavor of our land, fresh in your bottle.">
+  <title>Doce & Fresco | Sumo 100% Natural</title>
+  <meta name="description" content="Doce & Fresco - O sabor da nossa terra, fresco na sua garrafa.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -170,8 +170,8 @@
     <div class="hero-container">
       <div class="hero-heading-box">
         <h1 class="hero-heading">
-          <span class="phrase-land">The flavor of<br>our land,</span>
-          <span class="phrase-fresh">fresh in<br>your bottle.</span>
+          <span class="phrase-land">O sabor da<br>nossa terra,</span>
+          <span class="phrase-fresh">fresco na<br>sua garrafa.</span>
         </h1>
       </div>
     </div>
