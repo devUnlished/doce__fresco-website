@@ -57,10 +57,11 @@ except Exception as e:
 
 test("GET / returns HTTP 200 OK", status_code == 200)
 
-# 2. Verify Navbar with White Bottom Border Line
+# 2. Verify Navbar with White Bottom Border Line & Active Route Links
 test("Navbar is present with white bottom border line", 'class="navbar"' in html and "border-bottom: 2px solid #ffffff;" in html)
 test("Brand logo and navigation links are present in navbar", "brand-title" in html and "nav-links" in html)
-test("Contact item in navbar is plain text link (not a button)", 'href="#contacto" class="nav-link"' in html and "nav-btn-contact" not in html)
+test("Active links point to dedicated subpage routes", 'href="https://docefresco.primestackdigital.com/sobre"' in html or 'href="/sobre"' in html)
+test("Contact item in navbar is plain text link (not a button)", 'Contacto</a>' in html and "nav-btn-contact" not in html)
 test("Top announcement bar is removed from page", "top-bar" not in html)
 
 # 3. Verify all other content sections and footer are removed
@@ -110,7 +111,30 @@ try:
 except Exception as e:
     test("Hero background image returns HTTP 200", False, f"- Error: {e}")
 
-# 8. Verify file system
+# 8. Verify all other pages have active links, return HTTP 200, and include the navbar with white border
+subpages = [
+    ("/sobre", "Sobre Nós", "Sobre a Doce & Fresco"),
+    ("/sumos", "Nossos Sumos", "Os Nossos Sumos 100% Naturais"),
+    ("/origem", "Origem", "A Origem do Nosso Sabor"),
+    ("/contacto", "Contacto", "Fale com a Doce & Fresco"),
+]
+
+for path, link_title, expected_text in subpages:
+    sub_url = f"{BASE_URL}{path.lstrip('/')}"
+    try:
+        sub_req = urllib.request.Request(sub_url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(sub_req, context=ctx, timeout=10) as sub_resp:
+            sub_status = sub_resp.getcode()
+            sub_html = sub_resp.read().decode("utf-8")
+        test(f"Page {path} returns HTTP 200 OK", sub_status == 200)
+        test(
+            f"Page {path} has active nav indicator for '{link_title}' and white bottom border",
+            f'>{link_title}</a>' in sub_html and "border-bottom: 2px solid #ffffff;" in sub_html and expected_text in sub_html
+        )
+    except Exception as e:
+        test(f"Page {path} returns HTTP 200 OK", False, f"- Error: {e}")
+
+# 9. Verify file system
 remaining_images = os.listdir(IMAGES_DIR)
 test(
     "Only 'Doce&fresc_hero section.jpeg' remains in public/images",
@@ -118,11 +142,12 @@ test(
     f"- Found: {remaining_images}"
 )
 
-remaining_views = os.listdir(VIEWS_DIR)
+expected_views = {"landing.blade.php", "about.blade.php", "juices.blade.php", "origin.blade.php", "contact.blade.php", "layouts"}
+actual_views = set(os.listdir(VIEWS_DIR))
 test(
-    "Only 'landing.blade.php' remains in resources/views",
-    remaining_views == ["landing.blade.php"],
-    f"- Found: {remaining_views}"
+    "Dedicated views for all active pages exist in resources/views",
+    expected_views.issubset(actual_views),
+    f"- Found: {actual_views}"
 )
 
 print("=======================================================")

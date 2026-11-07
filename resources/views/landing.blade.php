@@ -330,11 +330,11 @@
       </a>
 
       <nav class="nav-links" id="navMenu">
-        <a href="#home" class="nav-link active">Início</a>
-        <a href="#sobre" class="nav-link">Sobre Nós</a>
-        <a href="#sumos" class="nav-link">Nossos Sumos</a>
-        <a href="#origem" class="nav-link">Origem</a>
-        <a href="#contacto" class="nav-link">Contacto</a>
+        <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Início</a>
+        <a href="{{ route('about') }}" class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}">Sobre Nós</a>
+        <a href="{{ route('juices') }}" class="nav-link {{ request()->routeIs('juices') ? 'active' : '' }}">Nossos Sumos</a>
+        <a href="{{ route('origin') }}" class="nav-link {{ request()->routeIs('origin') ? 'active' : '' }}">Origem</a>
+        <a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contacto</a>
       </nav>
 
       <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir Menu" aria-expanded="false">
