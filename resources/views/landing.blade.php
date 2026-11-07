@@ -3,69 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Doce & Fresco</title>
-  <meta name="description" content="Doce & Fresco - 100% Natural Juice">
+  <title>Doce & Fresco | 100% Natural Juice</title>
+  <meta name="description" content="Doce & Fresco - The flavor of our land, fresh in your bottle.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     html, body {
       width: 100%;
-      height: 100%;
       min-height: 100vh;
       min-height: 100dvh;
       margin: 0;
       padding: 0;
       overflow-x: hidden;
       background-color: #f1e6d3;
-      background: radial-gradient(circle at center, #fbf7ee 0%, #f1e6d3 100%);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at 75% 50%, #fbf6ec 0%, #f2e7d5 55%, #eae0ce 100%);
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
+
+    /* Hero Section with Responsive Background */
     .hero-section {
+      position: relative;
       width: 100%;
-      height: 100%;
       min-height: 100vh;
       min-height: 100dvh;
-      margin: 0;
-      padding: 0;
-      position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
       overflow: hidden;
+      background-image: url("{{ asset('images/Doce%26fresc_hero%20section.jpeg') }}");
+      background-size: cover;
+      background-position: left center;
+      background-repeat: no-repeat;
     }
-    .hero-bg-image {
+
+    /* Far-Right Container */
+    .hero-container {
       width: 100%;
-      height: 100%;
-      max-width: 100vw;
-      max-height: 100vh;
-      max-height: 100dvh;
-      object-fit: contain;
-      object-position: center;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 3rem 4rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Heading Box positioned at the Far Right */
+    .hero-heading-box {
+      max-width: 600px;
+      text-align: right;
+    }
+
+    /* Gradient-blended headline */
+    .hero-heading {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 4.6vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+
+    /* "The flavor of our land," in warm sun-ripened orchard tones */
+    .phrase-land {
       display: block;
-      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #c91924 0%, #e65100 55%, #f57c00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.85));
     }
 
-    /* On standard widescreen desktop displays, allow edge-to-edge fill */
-    @media (min-width: 1024px) and (min-aspect-ratio: 16/10) {
-      .hero-bg-image {
-        object-fit: cover;
+    /* "fresh in your bottle." in vibrant cold-pressed botanical green tones */
+    .phrase-fresh {
+      display: block;
+      margin-top: 0.35rem;
+      background: linear-gradient(135deg, #7cb342 0%, #2e7d32 60%, #1b5e20 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.85));
+    }
+
+    /* Sub-tag pill matching the brand */
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 0.45rem 1.1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #c91924;
+      border: 1px solid rgba(201, 25, 36, 0.2);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ==========================================================================
+       Responsive Optimization (Mobile & Tablets)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-container {
+        padding: 2.5rem 2rem;
+      }
+      .hero-heading {
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
       }
     }
 
-    /* On mobile devices and portrait screens, reduce image size so all content is 100% visible */
-    @media (max-width: 1023px), (max-aspect-ratio: 16/10) {
+    @media (max-width: 768px) {
       .hero-section {
-        padding: 0.75rem;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 1.5rem 1rem;
+        background-position: 28% 25%;
+        background-size: cover;
       }
-      .hero-bg-image {
-        object-fit: contain;
+
+      .hero-container {
+        padding: 0;
+        justify-content: center;
         width: 100%;
-        height: auto;
-        max-height: 95vh;
-        max-height: 95dvh;
+      }
+
+      .hero-heading-box {
+        max-width: 100%;
+        width: 100%;
+        text-align: right;
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1.5px solid rgba(255, 255, 255, 0.9);
+        border-radius: 22px;
+        padding: 1.75rem 1.5rem;
+        box-shadow: 0 16px 36px -8px rgba(18, 30, 21, 0.14);
+      }
+
+      .hero-heading {
+        font-size: clamp(1.85rem, 6.8vw, 2.5rem);
+      }
+
+      .hero-pill {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.85rem;
+        margin-bottom: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-heading-box {
+        padding: 1.4rem 1.15rem;
+      }
+      .hero-heading {
+        font-size: 1.85rem;
+        line-height: 1.2;
       }
     }
   </style>
@@ -73,11 +177,17 @@
 <body>
   <!-- Home Page Hero Section Only -->
   <section class="hero-section" id="home">
-    <img 
-      src="{{ asset('images/Doce%26fresc_hero%20section.jpeg') }}" 
-      alt="Doce & Fresco Hero Section" 
-      class="hero-bg-image"
-    />
+    <div class="hero-container">
+      <div class="hero-heading-box">
+        <div class="hero-pill">
+          <span>●</span> 100% Natural • Doce & Fresco
+        </div>
+        <h1 class="hero-heading">
+          <span class="phrase-land">The flavor of our land,</span>
+          <span class="phrase-fresh">fresh in your bottle.</span>
+        </h1>
+      </div>
+    </div>
   </section>
 </body>
 </html>

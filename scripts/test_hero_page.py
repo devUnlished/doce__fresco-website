@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """
-Doce & Fresco - Clean Hero Background Verification Suite
+Doce & Fresco - Far-Right Heading & Responsive Hero Verification Suite
 Verifies:
 1. Live HTTPS GET / returns HTTP 200 OK
 2. Navbar is completely absent
-3. All other content/sections (about, flavors, sourcing, events, contact, footer) are completely absent
-4. Home page has the hero section (#home) with no extraneous text content
-5. Hero section background image 'Doce&fresc_hero section.jpeg' returns HTTP 200 with valid JPEG MIME type
-6. Only 'Doce&fresc_hero section.jpeg' exists in public/images
-7. Only 'landing.blade.php' exists in resources/views
+3. Secondary sections (about, flavors, sourcing, events, contact, footer) are completely absent
+4. Heading text "The flavor of our land, fresh in your bottle." is present
+5. Heading is positioned to the far right (.hero-heading-box with text-align: right and justify-content: flex-end)
+6. Color-blended gradient phrases (.phrase-land and .phrase-fresh) are present
+7. Mobile responsive layout and frosted-glass backdrop styles are present
+8. Hero section background image returns HTTP 200 with valid JPEG MIME type
+9. Only 'Doce&fresc_hero section.jpeg' exists in public/images
+10. Only 'landing.blade.php' exists in resources/views
 """
 
 import os
@@ -35,7 +38,7 @@ def test(name, condition, details=""):
         print(f"  [FAIL] {name} {details}")
 
 print("=======================================================")
-print("Running Doce & Fresco Clean Hero Verification Suite")
+print("Running Doce & Fresco Hero Heading & Responsiveness Verification")
 print("=======================================================")
 
 ctx = ssl.create_default_context()
@@ -54,7 +57,7 @@ except Exception as e:
 
 test("GET / returns HTTP 200 OK", status_code == 200)
 
-# 2. Verify Navbar and top-bar are completely removed
+# 2. Verify Navbar is completely removed
 test("Navbar is removed from page", "navbar" not in html and "<nav" not in html)
 test("Top announcement bar is removed from page", "top-bar" not in html)
 
@@ -66,14 +69,30 @@ test("No events section", 'id="events"' not in html and "events-section" not in 
 test("No contact section or form", 'id="contact"' not in html and "<form" not in html)
 test("No footer", "<footer" not in html)
 
-# 4. Verify Hero Section exists with the background image
-test("Hero section (#home) is present", '<section class="hero-section" id="home">' in html and 'class="hero-bg-image"' in html)
+# 4. Verify Heading content
+test(
+    "Heading text 'The flavor of our land, fresh in your bottle.' is present",
+    "The flavor of our land," in html and "fresh in your bottle." in html
+)
 
-# 4b. Verify mobile responsiveness styles are present in markup
-test("Mobile responsive contain rules present", "object-fit: contain" in html and "max-width: 1023px" in html and "100dvh" in html)
+# 5. Verify Far-Right positioning & Color blending
+test(
+    "Far-right alignment styles are present",
+    "justify-content: flex-end" in html and "text-align: right" in html
+)
+test(
+    "Color-blended phrases (.phrase-land and .phrase-fresh) are present",
+    "phrase-land" in html and "phrase-fresh" in html and "background-clip: text" in html
+)
 
-# 5. Verify Background Image HTTP reachability
-hero_img_url = f"{BASE_URL}images/Doce&fresc_hero%20section.jpeg"
+# 6. Verify Mobile responsiveness rules
+test(
+    "Mobile responsive media queries and clamp font-size are present",
+    "@media (max-width: 768px)" in html and "clamp(" in html and "backdrop-filter" in html
+)
+
+# 7. Verify Background Image HTTP reachability
+hero_img_url = f"{BASE_URL}images/Doce%26fresc_hero%20section.jpeg"
 try:
     img_req = urllib.request.Request(hero_img_url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(img_req, context=ctx, timeout=10) as img_resp:
@@ -84,7 +103,7 @@ try:
 except Exception as e:
     test("Hero background image returns HTTP 200", False, f"- Error: {e}")
 
-# 6. Verify file system: Only 'Doce&fresc_hero section.jpeg' in public/images
+# 8. Verify file system
 remaining_images = os.listdir(IMAGES_DIR)
 test(
     "Only 'Doce&fresc_hero section.jpeg' remains in public/images",
@@ -92,7 +111,6 @@ test(
     f"- Found: {remaining_images}"
 )
 
-# 7. Verify file system: Only 'landing.blade.php' remains in resources/views
 remaining_views = os.listdir(VIEWS_DIR)
 test(
     "Only 'landing.blade.php' remains in resources/views",
