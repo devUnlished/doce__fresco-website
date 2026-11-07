@@ -68,6 +68,7 @@ test("No sourcing section", 'id="sourcing"' not in html and "sourcing-section" n
 test("No events section", 'id="events"' not in html and "events-section" not in html)
 test("No contact section or form", 'id="contact"' not in html and "<form" not in html)
 test("No footer", "<footer" not in html)
+test("Pill badge / button-looking border is removed", "hero-pill" not in html)
 
 # 4. Verify Heading content
 test(
@@ -75,10 +76,14 @@ test(
     "The flavor of our land," in html and "fresh in your bottle." in html
 )
 
-# 5. Verify Far-Right positioning & Color blending
+# 5. Verify Far-Right positioning, Upward shift & Color blending
 test(
-    "Far-right alignment styles are present",
-    "justify-content: flex-end" in html and "text-align: right" in html
+    "Far-right alignment and upward shift styles are present",
+    "justify-content: flex-end" in html and "text-align: right" in html and "translateY(-2.75rem)" in html
+)
+test(
+    "Enlarged heading font-size (~10px increase) is present",
+    "clamp(3.15rem" in html
 )
 test(
     "Color-blended phrases (.phrase-land and .phrase-fresh) are present",

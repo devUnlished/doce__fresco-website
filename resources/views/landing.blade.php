@@ -58,16 +58,18 @@
 
     /* Heading Box positioned at the Far Right */
     .hero-heading-box {
-      max-width: 600px;
+      max-width: 680px;
       text-align: right;
+      transform: translateY(-2.75rem);
+      transition: transform 0.3s ease;
     }
 
     /* Gradient-blended headline */
     .hero-heading {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.5rem, 4.6vw, 4.2rem);
+      font-size: clamp(3.15rem, 5.2vw, 4.85rem);
       font-weight: 900;
-      line-height: 1.15;
+      line-height: 1.12;
       letter-spacing: -0.025em;
       text-wrap: balance;
     }
@@ -91,26 +93,6 @@
       filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.85));
     }
 
-    /* Sub-tag pill matching the brand */
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 0.45rem 1.1rem;
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: #c91924;
-      border: 1px solid rgba(201, 25, 36, 0.2);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-      margin-bottom: 1.25rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
     /* ==========================================================================
        Responsive Optimization (Mobile & Tablets)
        ========================================================================== */
@@ -118,8 +100,12 @@
       .hero-container {
         padding: 2.5rem 2rem;
       }
+      .hero-heading-box {
+        max-width: 580px;
+        transform: translateY(-2rem);
+      }
       .hero-heading {
-        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        font-size: clamp(2.85rem, 5.5vw, 4.05rem);
       }
     }
 
@@ -128,7 +114,7 @@
         flex-direction: column;
         justify-content: flex-end;
         align-items: center;
-        padding: 1.5rem 1rem;
+        padding: 1.5rem 1rem 3rem 1rem;
         background-position: 28% 25%;
         background-size: cover;
       }
@@ -150,26 +136,25 @@
         border-radius: 22px;
         padding: 1.75rem 1.5rem;
         box-shadow: 0 16px 36px -8px rgba(18, 30, 21, 0.14);
+        transform: translateY(-1rem);
+        margin-bottom: 1.5rem;
       }
 
       .hero-heading {
-        font-size: clamp(1.85rem, 6.8vw, 2.5rem);
-      }
-
-      .hero-pill {
-        font-size: 0.75rem;
-        padding: 0.35rem 0.85rem;
-        margin-bottom: 0.85rem;
+        font-size: clamp(2.45rem, 7.5vw, 3.15rem);
+        line-height: 1.15;
       }
     }
 
     @media (max-width: 480px) {
       .hero-heading-box {
         padding: 1.4rem 1.15rem;
+        margin-bottom: 1.25rem;
+        transform: translateY(-0.5rem);
       }
       .hero-heading {
-        font-size: 1.85rem;
-        line-height: 1.2;
+        font-size: 2.45rem;
+        line-height: 1.15;
       }
     }
   </style>
@@ -179,9 +164,6 @@
   <section class="hero-section" id="home">
     <div class="hero-container">
       <div class="hero-heading-box">
-        <div class="hero-pill">
-          <span>●</span> 100% Natural • Doce & Fresco
-        </div>
         <h1 class="hero-heading">
           <span class="phrase-land">The flavor of our land,</span>
           <span class="phrase-fresh">fresh in your bottle.</span>
