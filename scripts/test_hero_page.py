@@ -69,6 +69,9 @@ test("No footer", "<footer" not in html)
 # 4. Verify Hero Section exists with the background image
 test("Hero section (#home) is present", '<section class="hero-section" id="home">' in html and 'class="hero-bg-image"' in html)
 
+# 4b. Verify mobile responsiveness styles are present in markup
+test("Mobile responsive contain rules present", "object-fit: contain" in html and "max-width: 1023px" in html and "100dvh" in html)
+
 # 5. Verify Background Image HTTP reachability
 hero_img_url = f"{BASE_URL}images/Doce&fresc_hero%20section.jpeg"
 try:
