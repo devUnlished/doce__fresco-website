@@ -82,8 +82,8 @@ test(
     "justify-content: flex-end" in html and "text-align: right" in html and "translateY(-2.75rem)" in html
 )
 test(
-    "Enlarged heading font-size (clamp up to 6.8rem / ~108px) is present",
-    "clamp(4.2rem" in html
+    "Enlarged heading font-size (clamp up to 8.5rem / ~136px) is present",
+    "clamp(5.0rem" in html
 )
 test(
     "Color-blended phrases (.phrase-land and .phrase-fresh) are present",

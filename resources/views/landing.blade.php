@@ -46,9 +46,9 @@
     /* Far-Right Container */
     .hero-container {
       width: 100%;
-      max-width: 1440px;
+      max-width: 1600px;
       margin: 0 auto;
-      padding: 3rem 4rem;
+      padding: 2.5rem 3.5rem;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -58,7 +58,7 @@
 
     /* Heading Box positioned at the Far Right */
     .hero-heading-box {
-      max-width: 900px;
+      max-width: 1100px;
       text-align: right;
       transform: translateY(-2.75rem);
       transition: transform 0.3s ease;
@@ -67,10 +67,10 @@
     /* Gradient-blended headline */
     .hero-heading {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(4.2rem, 7vw, 6.8rem);
+      font-size: clamp(5.0rem, 8.5vw, 8.5rem);
       font-weight: 900;
-      line-height: 1.04;
-      letter-spacing: -0.03em;
+      line-height: 1.0;
+      letter-spacing: -0.035em;
       text-wrap: balance;
     }
 
@@ -80,17 +80,17 @@
       background: linear-gradient(135deg, #c91924 0%, #e65100 55%, #f57c00 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.85));
+      filter: drop-shadow(0 2px 14px rgba(255, 255, 255, 0.9));
     }
 
     /* "fresh in your bottle." in vibrant cold-pressed botanical green tones */
     .phrase-fresh {
       display: block;
-      margin-top: 0.75rem;
+      margin-top: 0.85rem;
       background: linear-gradient(135deg, #7cb342 0%, #2e7d32 60%, #1b5e20 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.85));
+      filter: drop-shadow(0 2px 14px rgba(255, 255, 255, 0.9));
     }
 
     /* ==========================================================================
@@ -98,15 +98,15 @@
        ========================================================================== */
     @media (max-width: 1024px) {
       .hero-container {
-        padding: 2.5rem 2rem;
+        padding: 2rem 1.5rem;
       }
       .hero-heading-box {
-        max-width: 760px;
-        transform: translateY(-2rem);
+        max-width: 850px;
+        transform: translateY(-1.75rem);
       }
       .hero-heading {
-        font-size: clamp(3.75rem, 7.2vw, 5.25rem);
-        line-height: 1.06;
+        font-size: clamp(4.5rem, 8.8vw, 6.5rem);
+        line-height: 1.02;
       }
     }
 
@@ -142,12 +142,12 @@
       }
 
       .hero-heading {
-        font-size: clamp(3.1rem, 9.2vw, 4.2rem);
-        line-height: 1.08;
+        font-size: clamp(3.6rem, 10.5vw, 5.2rem);
+        line-height: 1.05;
       }
 
       .phrase-fresh {
-        margin-top: 0.5rem;
+        margin-top: 0.6rem;
       }
     }
 
@@ -158,8 +158,8 @@
         transform: translateY(-0.5rem);
       }
       .hero-heading {
-        font-size: clamp(2.65rem, 9.5vw, 3.25rem);
-        line-height: 1.08;
+        font-size: clamp(3.0rem, 11vw, 3.85rem);
+        line-height: 1.05;
       }
     }
   </style>
