@@ -123,25 +123,6 @@
       border-radius: 2px;
     }
 
-    .nav-btn-contact {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #ffffff;
-      background: linear-gradient(135deg, #c91924 0%, #e65100 100%);
-      padding: 0.6rem 1.4rem;
-      border-radius: 9999px;
-      text-decoration: none;
-      box-shadow: 0 4px 14px rgba(201, 25, 36, 0.3);
-      transition: all 0.25s ease;
-    }
-
-    .nav-btn-contact:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(201, 25, 36, 0.45);
-      color: #ffffff;
-    }
-
     .mobile-toggle {
       display: none;
       background: rgba(255, 255, 255, 0.7);
@@ -167,7 +148,7 @@
       align-items: center;
       justify-content: flex-end;
       overflow: hidden;
-      background-image: url("{{ asset('images/Doce%26fresc_hero%20section.jpeg') }}");
+      background-image: url("{{ asset('images/Doce%26fresc_hero%20section.jpeg') }}?v={{ file_exists(public_path('images/Doce&fresc_hero section.jpeg')) ? filemtime(public_path('images/Doce&fresc_hero section.jpeg')) : '2' }}");
       background-size: cover;
       background-position: left center;
       background-repeat: no-repeat;
@@ -283,12 +264,6 @@
         display: flex;
       }
 
-      .nav-btn-contact {
-        width: 100%;
-        text-align: center;
-        margin-top: 0.5rem;
-      }
-
       .hero-section {
         flex-direction: column;
         justify-content: flex-end;
@@ -359,7 +334,7 @@
         <a href="#sobre" class="nav-link">Sobre Nós</a>
         <a href="#sumos" class="nav-link">Nossos Sumos</a>
         <a href="#origem" class="nav-link">Origem</a>
-        <a href="#contacto" class="nav-btn-contact">Contactar</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
       </nav>
 
       <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir Menu" aria-expanded="false">
